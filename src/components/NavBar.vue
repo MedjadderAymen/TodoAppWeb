@@ -16,7 +16,12 @@
           </v-btn>
         </template>
         <v-list>
-          <v-list-item router :to="link.route" v-for="link in links" :key="link.title">
+          <v-list-item
+            router
+            :to="link.route"
+            v-for="link in links"
+            :key="link.title"
+          >
             <v-list-item-title>{{ link.title }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -35,6 +40,9 @@
             <img src="/avatar-2.png" alt="avatar" />
           </v-avatar>
           <p class="grey--text subheading mt-1">The Net Ninja</p>
+        </v-flex>
+        <v-flex class="mt-4 mb-3">
+          <Popup />
         </v-flex>
       </v-layout>
       <v-list-item>
@@ -69,6 +77,8 @@
 </template>
 
 <script>
+import Popup from "./Popup.vue";
+
 export default {
   name: "NavBar",
   data() {
@@ -80,6 +90,9 @@ export default {
         { title: "Team", icon: "mdi-account", route: "/team" },
       ],
     };
+  },
+  components: {
+    Popup,
   },
 };
 </script>
