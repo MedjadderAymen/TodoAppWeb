@@ -25,7 +25,7 @@
               <div class="grey--text">{{ person.role }}</div>
             </v-card-text>
             <v-card-actions>
-              <v-btn flat text small color="grey">
+              <v-btn text small color="grey">
                 <v-icon small text left> mdi-folder </v-icon>
                 <span>Message</span>
               </v-btn>

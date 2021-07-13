@@ -1,5 +1,15 @@
 <template>
   <nav>
+
+    <v-snackbar v-model="snackBar" :timeout="4000" top color="success">
+      <span>
+        Awesome! you added a new project
+      </span>
+      <v-btn plain color="" dark @click="snackBar=false">
+        close
+      </v-btn>
+    </v-snackbar>
+
     <v-app-bar app dense dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase gray--text">
@@ -11,16 +21,16 @@
       <v-menu open-on-hover offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn plain color="" dark v-bind="attrs" v-on="on">
-            <v-icon left> mdi-arrow-down </v-icon>
+            <v-icon left> mdi-arrow-down</v-icon>
             <span>Menu</span>
           </v-btn>
         </template>
         <v-list>
           <v-list-item
-            router
-            :to="link.route"
-            v-for="link in links"
-            :key="link.title"
+              router
+              :to="link.route"
+              v-for="link in links"
+              :key="link.title"
           >
             <v-list-item-title>{{ link.title }}</v-list-item-title>
           </v-list-item>
@@ -37,12 +47,12 @@
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
-            <img src="/avatar-2.png" alt="avatar" />
+            <img src="/avatar-2.png" alt="avatar"/>
           </v-avatar>
           <p class="grey--text subheading mt-1">The Net Ninja</p>
         </v-flex>
         <v-flex class="mt-4 mb-3">
-          <Popup />
+          <Popup @popupShow="snackBar=true"/>
         </v-flex>
       </v-layout>
       <v-list-item>
@@ -58,14 +68,14 @@
       <v-divider class="dark"></v-divider>
       <v-list dense nav rounded>
         <v-list-item
-          router
-          :to="link.route"
-          v-for="link in links"
-          :key="link.title"
-          color="warning"
+            router
+            :to="link.route"
+            v-for="link in links"
+            :key="link.title"
+            color="warning"
         >
           <v-list-item-icon>
-            <v-icon> {{ link.icon }} </v-icon>
+            <v-icon> {{ link.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>{{ link.title }}</v-list-item-title>
@@ -85,10 +95,11 @@ export default {
     return {
       drawer: false,
       links: [
-        { title: "Dashboard", icon: "mdi-view-dashboard", route: "/" },
-        { title: "Peojects", icon: "mdi-folder", route: "/projects" },
-        { title: "Team", icon: "mdi-account", route: "/team" },
+        {title: "Dashboard", icon: "mdi-view-dashboard", route: "/"},
+        {title: "Peojects", icon: "mdi-folder", route: "/projects"},
+        {title: "Team", icon: "mdi-account", route: "/team"},
       ],
+      snackBar: false
     };
   },
   components: {
